@@ -1,0 +1,110 @@
+// Variables
+$primary-color: #e50914;  // Netflix red cuz fun
+$bg-color: #141414;
+$text-color: #fff;
+$grid-gap: 2rem;
+
+// Mixin for fade animation
+@mixin fade-in {
+  animation: fadeIn 0.5s ease-in;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+// Global styles
+body {
+  font-family: 'Arial', sans-serif;
+  background-color: $bg-color;
+  color: $text-color;
+  margin: 0;
+  padding: 0;
+  line-height: 1.6;
+}
+
+header {
+  text-align: center;
+  padding: 2rem;
+  background: linear-gradient(to right, $primary-color, darken($primary-color, 20%));
+  @include fade-in;
+}
+
+h1, h2 {
+  margin: 0 0 1rem;
+}
+
+// Search section
+.search-section {
+  max-width: 600px;
+  margin: 2rem auto;
+  padding: 1rem;
+  text-align: center;
+
+  form {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+
+    input {
+      padding: 0.5rem;
+      border: 1px solid $primary-color;
+      border-radius: 4px;
+      background: $bg-color;
+      color: $text-color;
+    }
+
+    button {
+      padding: 0.5rem 1rem;
+      background: $primary-color;
+      color: $text-color;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      &:hover { background: darken($primary-color, 10%); }
+    }
+  }
+}
+
+// Results grid
+.results-section {
+  padding: 2rem;
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: $grid-gap;
+    max-width: 1200px;
+    margin: 0 auto;
+
+    article {
+      background: #333;
+      border-radius: 8px;
+      overflow: hidden;
+      cursor: pointer;
+      transition: transform 0.2s;
+      @include fade-in;
+
+      &:hover {
+        transform: scale(1.05);
+      }
+
+      img {
+        width: 100%;
+        height: 300px;
+        object-fit: cover;
+      }
+
+      .summary {
+        padding: 1rem;
+        p { margin: 0; font-size: 0.9rem; }
+      }
+    }
+  }
+}
+
+// Responsive
+@media (max-width: 768px) {
+  .grid { grid-template-columns: 1fr; }
+  .details-section { padding: 1rem; }
+}
