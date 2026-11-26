@@ -15,7 +15,7 @@ Search for Movies or TV show using a built in searchbar that recognizes keywords
 - Movie/show cards with descriptions
 
 ## How to run
-1. Clone the backend repository:
+1. Clone the repository:
    ```bash
    git clone (https://github.com/rmadilloman/Movie-site-test)
 
